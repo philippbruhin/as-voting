@@ -54,6 +54,24 @@ class As_Voting_Admin {
 
 	}
 
+
+	/**
+	 * Add top menu item
+	 *
+	 * @since  1.0.0
+	 */
+	public function add_admin_page() {
+
+		$this->plugin_screen_hook_suffix = add_menu_page(
+			__( 'User Voting', 'as-voting' ),
+			__( 'User Voting', 'as-voting' ),
+			'manage_options',
+			$this->plugin_name,
+			array( $this, 'plugin_page' ),
+			'dashicons-groups', null
+		);
+	}
+
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
