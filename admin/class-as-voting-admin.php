@@ -73,6 +73,38 @@ class As_Voting_Admin {
 	}
 
 	/**
+	* Handles the plugin admin partial views
+	*
+	* @since  1.0.0
+	*/
+	public function plugin_page() {
+		$action = isset( $_GET['action'] ) ? $_GET['action'] : 'list';
+		$id     = isset( $_GET['id'] ) ? intval( $_GET['id'] ) : 0;
+
+		switch ($action) {
+			case 'view':
+				$template = dirname( __FILE__ ) . '/partials/user-voting-single.php';
+				break;
+
+			case 'edit':
+				$template = dirname( __FILE__ ) . '/partials/user-voting-edit.php';
+				break;
+
+			case 'new':
+				$template = dirname( __FILE__ ) . '/partials/user-voting-new.php';
+				break;
+
+			default:
+				$template = dirname( __FILE__ ) . '/partials/user-voting-list.php';
+				break;
+		}
+
+		if ( file_exists( $template ) ) {
+			include $template;
+		}
+	}
+
+	/**
 	 * Register the stylesheets for the admin area.
 	 *
 	 * @since    1.0.0
